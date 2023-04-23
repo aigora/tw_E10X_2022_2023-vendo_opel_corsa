@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include<stdlib.h>
 
+int main()
+{
+    FILE pf;
+    pf=fopen("generacion_por_tecnologias_21_22.csv", "r");
+    return 0;
+}
 // un menu que permita al usuario elegir la tarea a realizar
 // vectores de estructuras
 // ficheros para leer y escribir
