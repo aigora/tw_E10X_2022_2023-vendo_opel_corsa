@@ -7,6 +7,11 @@
 
 #define LONGUITUD_MAXIMA 1024
 
+typedef struct
+{
+    int mes;
+    int year;
+}date;
 int lectura(int arcg, char **argv);
 >>>>>>> 6f52af8fa3b2343e090fa677f7294113723d9bcb
 // un menu que permita al usuario elegir la tarea a realizar
@@ -22,7 +27,16 @@ int main()
 {
     FILE pf;
     pf=fopen("generacion_por_tecnologias_21_22.csv", "r");
-    return 0;
+    if (pf == NULL)
+    {
+        printf("Error al abrir el fichero.\n");
+        return -1;
+    }
+    else
+    {
+        printf("Fichero abierto correctamente.\n");
+        return 0;
+    }
 }
 
 int lectura(int arcg,  char **argv)
