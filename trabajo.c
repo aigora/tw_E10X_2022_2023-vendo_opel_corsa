@@ -12,6 +12,8 @@ typedef struct
     int mes;
     int year;
 }date;
+int maximo(int vector[], int *max);
+int media(int vector[], int *med);
 int lectura(int arcg, char **argv);
 >>>>>>> 6f52af8fa3b2343e090fa677f7294113723d9bcb
 // un menu que permita al usuario elegir la tarea a realizar
@@ -37,6 +39,13 @@ int main()
         printf("Fichero abierto correctamente.\n");
         return 0;
     }
+    
+    int valor_maximo, valor_media;
+    
+    valor_maximo = int maximo(int vector[], int *max);
+    valor_media = int media(int vector[], int *med)
+
+
 }
 
 int lectura(int arcg,  char **argv)
@@ -63,3 +72,30 @@ int lectura(int arcg,  char **argv)
     fclose(fp);
     return 0;
 }
+
+int maximo(int vector[], int *max)
+{
+	int numero_maximo;
+	if(vector[i] > *max)
+	{
+		*max = vector[i];
+	}
+	*max = numero_maximo;
+	return numero_maximo;
+}
+
+int media(int vector[], int *med)
+{
+	int i;
+	float result_suma = 0;
+	float result_media;
+	*max = vector[0];
+	for(i = 0; i<n; i++)
+	{
+		result_suma = result_suma + vector[i];
+	}
+	result_media = result_suma / n;
+	*media = result_media;
+	return result_media;
+}
+
