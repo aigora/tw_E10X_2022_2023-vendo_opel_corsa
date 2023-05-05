@@ -25,7 +25,7 @@ int lectura(int arcg, char **argv);
 // diagrama de flujo que explique el proyecto
 int main()
 {
-    FILE pf;
+    FILE *pf;
     pf=fopen("generacion_por_tecnologias_21_22.csv", "r");
     if (pf == NULL)
     {
