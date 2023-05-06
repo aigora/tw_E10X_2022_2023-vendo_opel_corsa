@@ -12,8 +12,13 @@ typedef struct
     int mes;
     int year;
 }date;
-int maximo(int vector[], int *max);
-int media(int vector[], int *med);
+typedef struct
+{
+    date fecha;
+    double energia[18];
+}data;
+double maximo(double vector[], double *max);
+double media(double vector[], int n, double *med);
 int lectura(int arcg, char **argv);
 >>>>>>> 6f52af8fa3b2343e090fa677f7294113723d9bcb
 // un menu que permita al usuario elegir la tarea a realizar
@@ -37,13 +42,15 @@ int main()
     else
     {
         printf("Fichero abierto correctamente.\n");
+        int valor_maximo, valor_media;
+        data datos[24];
+        
+        valor_maximo = maximo(int vector[], int *max);
+        valor_media = media(int vector[], int *med);
         return 0;
     }
     
-    int valor_maximo, valor_media;
     
-    valor_maximo = int maximo(int vector[], int *max);
-    valor_media = int media(int vector[], int *med)
 
 
 }
@@ -73,9 +80,9 @@ int lectura(int arcg,  char **argv)
     return 0;
 }
 
-int maximo(int vector[], int *max)
+double maximo(double vector[], double *max)
 {
-	int numero_maximo;
+	double numero_maximo;
 	if(vector[i] > *max)
 	{
 		*max = vector[i];
@@ -84,11 +91,11 @@ int maximo(int vector[], int *max)
 	return numero_maximo;
 }
 
-int media(int vector[], int *med)
+double media(double vector[], int n, double *med)
 {
 	int i;
-	float result_suma = 0;
-	float result_media;
+	double result_suma = 0;
+	double result_media;
 	*max = vector[0];
 	for(i = 0; i<n; i++)
 	{
