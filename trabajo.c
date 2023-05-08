@@ -19,7 +19,7 @@ typedef struct
 }data;
 double maximo(double vector[], double *max);
 double media(double vector[], int n, double *med);
-int lectura(int arcg, char **argv);
+//int lectura(int arcg, char **argv);
 >>>>>>> 6f52af8fa3b2343e090fa677f7294113723d9bcb
 // un menu que permita al usuario elegir la tarea a realizar
 // vectores de estructuras
@@ -55,7 +55,7 @@ int main()
 
 }
 
-int lectura(int arcg,  char **argv)
+/*int lectura(int arcg,  char **argv)
 {
     FILE *fp;
     char linea[LONGUITUD_MAXIMA];
@@ -78,7 +78,7 @@ int lectura(int arcg,  char **argv)
     }
     fclose(fp);
     return 0;
-}
+}*/
 
 double maximo(double vector[], double *max)
 {
