@@ -45,8 +45,8 @@ int main()
         int valor_maximo, valor_media;
         data datos[24];
         
-        valor_maximo = maximo(int vector[], int *max);
-        valor_media = media(int vector[], int *med);
+        valor_maximo = maximo(datos[], &valor_maximo);
+		valor_media = media(datos[], &valor_media);
         return 0;
     }
     
