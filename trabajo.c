@@ -1,3 +1,15 @@
+//int lectura(int arcg, char **argv);
+// un menu que permita al usuario elegir la tarea a realizar
+// vectores de estructuras
+// ficheros para leer y escribir
+// prohibido el uso de variables fuera de main
+// estructurar codigo con funciones
+// uso de cabeceras de c
+// obligatorio uso de github
+// documentacion en una wiki de github
+// diagrama de flujo que explique el proyecto
+
+
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -19,17 +31,7 @@ typedef struct
 }data;
 double maximo(double vector[], double *max);
 double media(double vector[], int n, double *med);
-//int lectura(int arcg, char **argv);
->>>>>>> 6f52af8fa3b2343e090fa677f7294113723d9bcb
-// un menu que permita al usuario elegir la tarea a realizar
-// vectores de estructuras
-// ficheros para leer y escribir
-// prohibido el uso de variables fuera de main
-// estructurar codigo con funciones
-// uso de cabeceras de c
-// obligatorio uso de github
-// documentacion en una wiki de github
-// diagrama de flujo que explique el proyecto
+
 int main()
 {
     FILE *pf;
