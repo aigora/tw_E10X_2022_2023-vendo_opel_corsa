@@ -49,10 +49,6 @@ int main()
 		valor_media = media(datos[], &valor_media);
         return 0;
     }
-    
-    
-
-
 }
 
 /*int lectura(int arcg,  char **argv)
@@ -87,7 +83,7 @@ double maximo(double vector[], double *max)
 	{
 		*max = vector[i];
 	}
-	*max = numero_maximo;
+	numero_maximo = *max;
 	return numero_maximo;
 }
 
@@ -96,13 +92,12 @@ double media(double vector[], int n, double *med)
 	int i;
 	double result_suma = 0;
 	double result_media;
-	*max = vector[0];
 	for(i = 0; i<n; i++)
 	{
 		result_suma = result_suma + vector[i];
 	}
 	result_media = result_suma / n;
-	*media = result_media;
+	*med = result_media;
 	return result_media;
 }
 
