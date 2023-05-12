@@ -19,16 +19,17 @@
 
 #define LONGUITUD_MAXIMA 1024
 
-typedef struct
+typedef struct 
 {
     int mes;
     int year;
-}date;
+} dia;
+
 typedef struct
 {
-    date fecha;
+    dia fecha;
     double energia[18];
-}data;
+} data;
 double maximo(double vector[], double *max);
 double media(double vector[], int n, double *med);
 
@@ -51,6 +52,30 @@ int main()
 		valor_media = media(datos[], &valor_media);
         return 0;
     }
+}
+double maximo(double vector[], double *max)
+{
+	double numero_maximo;
+	if(vector[i] > *max)
+	{
+		*max = vector[i];
+	}
+	numero_maximo = *max;
+	return numero_maximo;
+}
+
+double media(double vector[], int n, double *med)
+{
+	int i;
+	double result_suma = 0;
+	double result_media;
+	for(i = 0; i<n; i++)
+	{
+		result_suma = result_suma + vector[i];
+	}
+	result_media = result_suma / n;
+	*med = result_media;
+	return result_media;
 }
 
 /*int lectura(int arcg,  char **argv)
@@ -77,29 +102,3 @@ int main()
     fclose(fp);
     return 0;
 }*/
-
-double maximo(double vector[], double *max)
-{
-	double numero_maximo;
-	if(vector[i] > *max)
-	{
-		*max = vector[i];
-	}
-	numero_maximo = *max;
-	return numero_maximo;
-}
-
-double media(double vector[], int n, double *med)
-{
-	int i;
-	double result_suma = 0;
-	double result_media;
-	for(i = 0; i<n; i++)
-	{
-		result_suma = result_suma + vector[i];
-	}
-	result_media = result_suma / n;
-	*med = result_media;
-	return result_media;
-}
-
