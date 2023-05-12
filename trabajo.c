@@ -14,12 +14,10 @@
 #include<stdlib.h>
 #include<string.h>
 
-<<<<<<< HEAD
-=======
 
 #define LONGUITUD_MAXIMA 1024
 
-typedef struct 
+typedef struct
 {
     int mes;
     int year;
@@ -27,8 +25,8 @@ typedef struct
 
 typedef struct
 {
-    dia fecha;
     double energia[18];
+    dia fecha;
 } data;
 double maximo(double vector[], double *max);
 double media(double vector[], int n, double *med);
@@ -56,6 +54,7 @@ int main()
 double maximo(double vector[], double *max)
 {
 	double numero_maximo;
+    *max=vector[0];
 	if(vector[i] > *max)
 	{
 		*max = vector[i];
