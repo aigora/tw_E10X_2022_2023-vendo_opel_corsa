@@ -45,9 +45,9 @@ int main()
         printf("Fichero abierto correctamente.\n");
         double valor_maximo, valor_media;
         data datos[24];
-        
-        maximo(datos, &valor_maximo);
-		media(datos, &valor_media);
+        int tamaño=24;
+        maximo(datos, tamaño, &valor_maximo);
+		media(datos, tamaño, &valor_media);
         return 0;
     }
 }
