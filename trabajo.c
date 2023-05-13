@@ -18,13 +18,13 @@
 #define LONGUITUD_MAXIMA 1024
 
 // donde se guardan los datos 
-typedef struct 
+typedef struct dia
 {
     int mes;
     int year;
 } dia;
 
-typedef struct
+typedef struct data 
 {
     double energia[18];
     dia fecha;
