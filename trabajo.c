@@ -11,13 +11,14 @@
 
 
 #include <stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 #define LONGUITUD_MAXIMA 1024
 
-typedef struct
+// donde se guardan los datos 
+typedef struct 
 {
     int mes;
     int year;
@@ -28,12 +29,17 @@ typedef struct
     double energia[18];
     dia fecha;
 } data;
+
+// funciones 
 void maximo(double vector[], int n, double *max);
 void media(double vector[], int n, double *med);
 void minimo(double vector[], int n, double *min);
+void menu(void);
 
+//rama principal del programa 
 int main()
 {
+    int menu_option;
     FILE *pf;
     pf=fopen("generacion_por_tecnologias_21_22.csv", "r");
     if (pf == NULL)
@@ -53,9 +59,48 @@ int main()
             minimo(datos[i].energia, tamaño, &valor_minimo[i]);
             media(datos[i].energia, tamaño, &valor_media[i]);
         }
+        // no entiendo muy bien que es lo que hace esta parte del codigo pero voy a hacer el menu 
+        printf("SELECCIONE LA ACCION QUE QUIERE LLEVAR A CABO\n");
+        printf("\n");
+        menu(); // funcion que escribe las opciones el menu en pantalla 
+        switch(menu_option)
+        {
+            case '1':
+            printf("ha selecionado el modo Estadística\n");
+            // hacer cosas
+            break;
+            case '2':
+            printf("has seleccionado el modo para cargar datos\n");
+            // hacer cosas
+            break;
+            case '3':
+            printf("has seleccionado el modo para guardar resultados\n");
+            // hacer cosas
+            break;
+            case '4':
+            printf("has seleccionado el modo para buscar u ordenar valores\n");
+            // hacer cosas 
+            break;
+            default:
+            printf("eres mongolo\n"); // esa opcion no estaba en el menu 
+            break;
+        }
+        
+
         return 0;
     }
 }
+
+//programa en las funciones 
+
+void menu(void)
+{
+    printf("1 - Calculos Estadisticos\n");
+    printf("2 - Carga de Nuevos Datos\n");
+    printf("3 - Guardar Resultados\n"); // prosiblemente en sitios de memoria nuevos 
+    printf("4 - Busqueda/ordenar valores\n");
+}
+
 void maximo(double vector[], int n, double *max)
 {
     *max=vector[0];
