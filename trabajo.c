@@ -61,7 +61,6 @@ void maximo(double vector[], int n, double *max)
             *max = vector[i];
         }
     }
-	numero_maximo = *max;
 }
 
 void media(double vector[], int n, double *med)
