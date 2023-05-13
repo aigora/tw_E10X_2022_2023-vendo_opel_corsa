@@ -30,6 +30,7 @@ typedef struct
 } data;
 void maximo(double vector[], int n, double *max);
 void media(double vector[], int n, double *med);
+void minimo(double vector[], int n, double *min);
 
 int main()
 {
@@ -43,12 +44,13 @@ int main()
     else
     {
         printf("Fichero abierto correctamente.\n");
-        double valor_maximo[24], valor_media[24];
+        double valor_maximo[24], valor_media[24], valor_minimo[24];
         data datos[24];
         int tamaño=18;
         int i;
         for (i=0; i<tamaño; i++) {
             maximo(datos[i].energia, tamaño, &valor_maximo[i]);
+            minimo(datos[i].energia, tamaño, &valor_minimo[i]);
             media(datos[i].energia, tamaño, &valor_media[i]);
         }
         return 0;
@@ -65,16 +67,26 @@ void maximo(double vector[], int n, double *max)
         }
     }
 }
+void minimo(double vector[], int n, double *min)
+{
+    *min=vector[0];
+    int i;
+    for (i=0; i<n; i++) {
+        if(vector[i] < *min)
+        {
+            *min = vector[i];
+        }
+    }
+}
 
 void media(double vector[], int n, double *med)
 {
-	int i;
-	double result_suma = 0;
-	for(i = 0; i<n; i++)
-	{
-		result_suma = result_suma + vector[i];
-	}
-	*med = result_suma / n;
+    int i;
+    for(i = 0; i<n; i++)
+    {
+        result_suma = result_suma + vector[i];
+    }
+    *med = result_suma / n;
 }
 
 /*int lectura(int arcg,  char **argv)
