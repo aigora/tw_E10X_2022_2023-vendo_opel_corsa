@@ -43,11 +43,11 @@ int main()
     else
     {
         printf("Fichero abierto correctamente.\n");
-        int valor_maximo, valor_media;
+        double valor_maximo, valor_media;
         data datos[24];
         
-        valor_maximo = maximo(datos[], &valor_maximo);
-		valor_media = media(datos[], &valor_media);
+        maximo(datos, &valor_maximo);
+		media(datos, &valor_media);
         return 0;
     }
 }
