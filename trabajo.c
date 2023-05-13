@@ -28,8 +28,8 @@ typedef struct
     double energia[18];
     dia fecha;
 } data;
-double maximo(double vector[], double *max);
-double media(double vector[], int n, double *med);
+void maximo(double vector[], int n, double *max);
+void media(double vector[], int n, double *med);
 
 int main()
 {
@@ -51,30 +51,28 @@ int main()
         return 0;
     }
 }
-double maximo(double vector[], double *max)
+void maximo(double vector[], int n, double *max)
 {
-	double numero_maximo;
     *max=vector[0];
-	if(vector[i] > *max)
-	{
-		*max = vector[i];
-	}
+    int i;
+    for (i=0; i<n; i++) {
+        if(vector[i] > *max)
+        {
+            *max = vector[i];
+        }
+    }
 	numero_maximo = *max;
-	return numero_maximo;
 }
 
-double media(double vector[], int n, double *med)
+void media(double vector[], int n, double *med)
 {
 	int i;
 	double result_suma = 0;
-	double result_media;
 	for(i = 0; i<n; i++)
 	{
 		result_suma = result_suma + vector[i];
 	}
-	result_media = result_suma / n;
-	*med = result_media;
-	return result_media;
+	*med = result_suma / n;
 }
 
 /*int lectura(int arcg,  char **argv)
