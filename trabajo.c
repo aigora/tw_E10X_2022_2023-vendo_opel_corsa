@@ -82,6 +82,7 @@ void minimo(double vector[], int n, double *min)
 void media(double vector[], int n, double *med)
 {
     int i;
+    double result_suma=0;
     for(i = 0; i<n; i++)
     {
         result_suma = result_suma + vector[i];
