@@ -43,11 +43,14 @@ int main()
     else
     {
         printf("Fichero abierto correctamente.\n");
-        double valor_maximo, valor_media;
+        double valor_maximo[24], valor_media[24];
         data datos[24];
-        int tamaño=24;
-        maximo(datos, tamaño, &valor_maximo);
-		media(datos, tamaño, &valor_media);
+        int tamaño=18;
+        int i;
+        for (i=0; i<tamaño; i++) {
+            maximo(datos[i].energia, tamaño, &valor_maximo[i]);
+            media(datos[i].energia, tamaño, &valor_media[i]);
+        }
         return 0;
     }
 }
