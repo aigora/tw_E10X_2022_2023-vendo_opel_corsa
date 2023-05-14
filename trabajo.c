@@ -17,31 +17,31 @@
 
 #define LONGUITUD_MAXIMA 1024 // esto ahora mismo no vale para nada, valdra cuando consiga hacer una funcion capaz de leerlo
 
-// donde se guardan los datos 
+// donde se guardan los datos
 typedef struct dia
 {
     int mes;
     int year;
 } dia;
 
-typedef struct data 
+typedef struct data
 {
     double energia[18];
     dia fecha;
 } data;
 
-// funciones 
+// funciones
 void maximo(double vector[], int n, double *max);
 void media(double vector[], int n, double *med);
 void minimo(double vector[], int n, double *min);
 void menu(void);
 
-//rama principal del programa 
+//rama principal del programa
 int main()
 {
     int menu_option;
     FILE *pf;
-    pf=fopen("generacion_por_tecnologias_21_22_puntos.csv", "r");
+    pf=fopen("generacion_por_tecnologias_21_22.csv", "r");
     if (pf == NULL)
     {
         printf("Error al abrir el fichero.\n");
@@ -54,36 +54,59 @@ int main()
         data datos[24];
         int tamaño=18;
         int i;
-        for (i=0; i<tamaño; i++) {
+        for (i=0; i<24; i++) {
             maximo(datos[i].energia, tamaño, &valor_maximo[i]);
             minimo(datos[i].energia, tamaño, &valor_minimo[i]);
             media(datos[i].energia, tamaño, &valor_media[i]);
         }
-        // no entiendo muy bien que es lo que hace esta parte del codigo pero voy a hacer el menu 
+        // no entiendo muy bien que es lo que hace esta parte del codigo pero voy a hacer el menu
         printf("SELECCIONE LA ACCION QUE QUIERE LLEVAR A CABO\n");
         printf("\n");
-        menu(); // funcion que escribe las opciones el menu en pantalla 
+        menu(); // funcion que escribe las opciones el menu en pantalla
+        char menu_option, estadistico_option;
+        scanf("%c", &menu_option);
         switch(menu_option)
         {
             case '1':
-            printf("ha selecionado el modo Estadística\n");
-            // hacer cosas
-            break;
+                printf("ha selecionado el modo Estadística\n");
+                printf("Si quiere calcular los maximos pulse 1, si quiere calcular los minimos pulse 2, si quiere calcular la medias pulse 3\n");
+                scanf(" %c", &estadistico_option);
+                switch (estadistico_option) {
+                    case '1':
+                        for (i=0; i<24; i++) {
+                            printf("En la fecha %i/%i el valor de energia maxima era %f.\n", datos[i].fecha.mes, datos[i].fecha.year, valor_maximo[i]);
+                        }
+                        break;
+                    case '2':
+                        for (i=0; i<24; i++) {
+                            printf("En la fecha %i/%i el valor de energia minima era %f.\n", datos[i].fecha.mes, datos[i].fecha.year, valor_minimo[i]);
+                        }
+                        break;
+                    case '3':
+                        for (i=0; i<24; i++) {
+                            printf("En la fecha %i/%i el valor de energia media era %f.\n", datos[i].fecha.mes, datos[i].fecha.year, valor_media[i]);
+                        }
+                        break;
+                    default:
+                        printf("Esa no era una opcion.\n");
+                        break;
+                }
+                break;
             case '2':
-            printf("has seleccionado el modo para cargar datos\n");
+                printf("has seleccionado el modo para cargar datos\n");
             // hacer cosas
-            break;
+                break;
             case '3':
-            printf("has seleccionado el modo para guardar resultados\n");
+                printf("has seleccionado el modo para guardar resultados\n");
             // hacer cosas
-            break;
+                break;
             case '4':
-            printf("has seleccionado el modo para buscar u ordenar valores\n");
-            // hacer cosas 
-            break;
+                printf("has seleccionado el modo para buscar u ordenar valores\n");
+            // hacer cosas
+                break;
             default:
-            printf("eres mongolo\n"); // esa opcion no estaba en el menu 
-            break;
+                printf("esa opcion no estaba en el menu\n");
+                break;
         }
         
 
@@ -91,13 +114,13 @@ int main()
     }
 }
 
-//programa en las funciones 
+//programa en las funciones
 
 void menu(void)
 {
     printf("1 - Calculos Estadisticos\n");
     printf("2 - Carga de Nuevos Datos\n");
-    printf("3 - Guardar Resultados\n"); // prosiblemente en sitios de memoria nuevos 
+    printf("3 - Guardar Resultados\n"); // prosiblemente en sitios de memoria nuevos
     printf("4 - Busqueda/ordenar valores\n");
 }
 
