@@ -41,7 +41,7 @@ int main()
 {
     int menu_option;
     FILE *pf;
-    pf=fopen("generacion_por_tecnologias_21_22.csv", "r");
+    pf=fopen("generacion_por_tecnologias_21_22_puntos.csv", "r");
     if (pf == NULL)
     {
         printf("Error al abrir el fichero.\n");
