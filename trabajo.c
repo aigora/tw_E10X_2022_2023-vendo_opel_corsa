@@ -52,7 +52,7 @@ int main(int argc, const char * argv[])
         printf("Fichero abierto correctamente.\n");
         double valor_maximo[24], valor_media[24], valor_minimo[24];
         data datos[24];
-        int tamaño=18;
+        int tamano=18;
         int i=0;
         char x;
         int cuenta_lineas=0;
@@ -84,9 +84,9 @@ int main(int argc, const char * argv[])
             i++;
         }
         for (i=0; i<24; i++) {
-            maximo(datos[i].energia, tamaño, &valor_maximo[i]);
-            minimo(datos[i].energia, tamaño, &valor_minimo[i]);
-            media(datos[i].energia, tamaño, &valor_media[i]);
+            maximo(datos[i].energia, tamano, &valor_maximo[i]);
+            minimo(datos[i].energia, tamano, &valor_minimo[i]);
+            media(datos[i].energia, tamano, &valor_media[i]);
         }
         // no entiendo muy bien que es lo que hace esta parte del codigo pero voy a hacer el menu
         printf("SELECCIONE LA ACCION QUE QUIERE LLEVAR A CABO\n");
