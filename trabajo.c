@@ -37,9 +37,9 @@ void minimo(double vector[], int n, double *min);
 void menu(void);
 
 //rama principal del programa
-int main()
+int main(int argc, const char * argv[])
 {
-    int menu_option;
+    char menu_option;
     FILE *pf;
     pf=fopen("generacion_por_tecnologias_21_22_puntos.csv", "r");
     if (pf == NULL)
@@ -54,7 +54,22 @@ int main()
         data datos[24];
         int tamaño=18;
         int i=0;
-        while (fscanf(pf, " %i/%i ", &datos[i].fecha.mes, &datos[i].fecha.year)!=EOF) {
+        char x;
+        int cuenta_lineas=0;
+        while (cuenta_lineas!=4) {
+            if(fscanf(pf, "%c", &x)=='\n')
+            {
+                cuenta_lineas++;
+            }
+        }
+        i=0;
+        while (fscanf(pf, "%c", &x)!=EOF) {
+            if(x=='a')
+            {
+                break;
+            }
+        }
+        while (fscanf(pf, ",%i/%i,", &datos[i].fecha.mes, &datos[i].fecha.year)!=EOF) {
             i++;
             if(i==24)
             {
@@ -62,7 +77,10 @@ int main()
             }
         }
         i=0;
-        while (fscanf(pf, " %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f", &datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i], &datos[6].energia[i], &datos[7].energia[i], &datos[8].energia[i], &datos[9].energia[i], &datos[10].energia[i], &datos[11].energia[i], &datos[12].energia[i], &datos[13].energia[i], &datos[14].energia[i], &datos[15].energia[i], &datos[16].energia[i], &datos[17].energia[i], &datos[18].energia[i], &datos[19].energia[i], &datos[20].energia[i], &datos[21].energia[i], &datos[22].energia[i], &datos[23].energia[i])!=EOF) {
+        for (i=0; i<24; i++) {
+            printf("%i/%i", datos[i].fecha.mes, datos[i].fecha.year);
+        }
+        while (fscanf(pf, ",%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf", &datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i], &datos[6].energia[i], &datos[7].energia[i], &datos[8].energia[i], &datos[9].energia[i], &datos[10].energia[i], &datos[11].energia[i], &datos[12].energia[i], &datos[13].energia[i], &datos[14].energia[i], &datos[15].energia[i], &datos[16].energia[i], &datos[17].energia[i], &datos[18].energia[i], &datos[19].energia[i], &datos[20].energia[i], &datos[21].energia[i], &datos[22].energia[i], &datos[23].energia[i])!=EOF) {
             i++;
         }
         for (i=0; i<24; i++) {
@@ -74,7 +92,7 @@ int main()
         printf("SELECCIONE LA ACCION QUE QUIERE LLEVAR A CABO\n");
         printf("\n");
         menu(); // funcion que escribe las opciones el menu en pantalla
-        char menu_option, estadistico_option;
+        char estadistico_option;
         scanf("%c", &menu_option);
         switch(menu_option)
         {
