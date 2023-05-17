@@ -77,9 +77,6 @@ int main(int argc, const char * argv[])
             }
         }
         i=0;
-        for (i=0; i<24; i++) {
-            printf("%i/%i", datos[i].fecha.mes, datos[i].fecha.year);
-        }
         while (fscanf(pf, ",%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf", &datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i], &datos[6].energia[i], &datos[7].energia[i], &datos[8].energia[i], &datos[9].energia[i], &datos[10].energia[i], &datos[11].energia[i], &datos[12].energia[i], &datos[13].energia[i], &datos[14].energia[i], &datos[15].energia[i], &datos[16].energia[i], &datos[17].energia[i], &datos[18].energia[i], &datos[19].energia[i], &datos[20].energia[i], &datos[21].energia[i], &datos[22].energia[i], &datos[23].energia[i])!=EOF) {
             i++;
         }
@@ -93,6 +90,8 @@ int main(int argc, const char * argv[])
         printf("\n");
         menu(); // funcion que escribe las opciones el menu en pantalla
         char estadistico_option;
+        int cambio1;
+        int cambio2;
         scanf("%c", &menu_option);
         switch(menu_option)
         {
@@ -123,7 +122,19 @@ int main(int argc, const char * argv[])
                 break;
             case '2':
                 printf("has seleccionado el modo para cargar datos\n");
-            // hacer cosas
+                printf("Pulse 0 para Hidraulica, pulse 1 para Turbinacion bombeo, pulse 2 para Nuclear, pulse 3 para Carbon, pulse 4 para Fuel + Gas, pulse 5 para Motores diesel, pulse 6 para Turbina de gas, pulse 7 para Turbina de vapor, pulse 8 para Ciclo combinado, pulse 9 para Hidroeolica, pulse 10 para Eolica, pulse 11 para Solar fotovoltaica, pulse 12 para Solar termica, pulse 13 para Otras renovables, pulse 14 para Cogeneracion, pulse 15 para Residuos no renovables, pulse 16 para Residuos renovables, pulse 17 para Generacion total.\n");
+                do {
+                    scanf("%i", &cambio1);
+                } while (cambio1>17);
+                for (i=0; i<24; i++) {
+                    printf("pulsa %i si quiere cambiar un dato de la fecha %i/%i, ", i, datos[i].fecha.mes, datos[i].fecha.year);
+                }
+                printf("\n");
+                do {
+                    scanf("%i", &cambio2);
+                } while (cambio2>24);
+                printf("Escriba el numero que quieras poner");
+                scanf("%lf", &datos[cambio2].energia[cambio1]);
                 break;
             case '3':
                 printf("has seleccionado el modo para guardar resultados\n");
