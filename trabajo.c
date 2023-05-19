@@ -26,7 +26,7 @@ typedef struct dia
 
 typedef struct data
 {
-    double energia[18];
+    double energia[17];
 } data;
 
 // funciones
@@ -40,7 +40,9 @@ int main(int argc, const char * argv[])
 {
     char menu_option;
     FILE *pf;
-    dia test= {{1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12},{2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022}};
+    dia test= {{1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12},
+	{2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2022,2022,2022,2022,
+	2022,2022,2022,2022,2022,2022,2022,2022}};
     pf=fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
     if (pf == NULL)
     {
@@ -52,7 +54,7 @@ int main(int argc, const char * argv[])
         printf("Fichero abierto correctamente.\n");
         double valor_maximo[24], valor_media[24], valor_minimo[24];
         data datos[24];
-        int tamano=18;
+        int tamano=17;
         int i=0;
         char x;
         int cuenta_lineas=0;
