@@ -56,26 +56,14 @@ int main(int argc, const char * argv[])
         int i=0;
         char x;
         int cuenta_lineas=0;
-        while (cuenta_lineas!=4) {
-            if(fscanf(pf, "%c", &x)=='\n')
-            {
-                cuenta_lineas++;
-            }
-        }
-        i=0;
-        while (fscanf(pf, "%c", &x)!=EOF) {
-            if(x=='a')
-            {
-                break;
-            }
-        }
-        while (fscanf(pf, ",%i/%i,", &datos[i].fecha.mes, &datos[i].fecha.year)!=EOF) {
-            i++;
-            if(i==24)
-            {
-                break;
-            }
-        }
+        while(fscanf(pf, "%c" , &x) != EOF)
+        {
+        	if(x == '\n')
+        	{
+        		cuenta_lineas++;
+			}
+		}
+        printf("%i\n", cuenta_lineas);
         i=0;
         while (fscanf(pf, ",%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf", 
 		&datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i], 
@@ -101,23 +89,26 @@ int main(int argc, const char * argv[])
         switch(menu_option)
         {
             case '1':
-                printf("ha selecionado el modo Estadística\n");
+                printf("ha selecionado el modo Estadistica\n");
                 printf("Si quiere calcular los maximos pulse 1, si quiere calcular los minimos pulse 2, si quiere calcular la medias pulse 3\n");
                 scanf(" %c", &estadistico_option);
                 switch (estadistico_option) {
                     case '1':
                         for (i=0; i<24; i++) {
-                            printf("En la fecha %i/%i el valor de energia maxima era %f.\n", datos[i].fecha.mes, datos[i].fecha.year, valor_maximo[i]);
+                            printf("En la fecha %i/%i el valor de energia maxima era %f.\n", 
+							datos[i].fecha.mes, datos[i].fecha.year, valor_maximo[i]);
                         }
                         break;
                     case '2':
                         for (i=0; i<24; i++) {
-                            printf("En la fecha %i/%i el valor de energia minima era %f.\n", datos[i].fecha.mes, datos[i].fecha.year, valor_minimo[i]);
+                            printf("En la fecha %i/%i el valor de energia minima era %f.\n", 
+							datos[i].fecha.mes, datos[i].fecha.year, valor_minimo[i]);
                         }
                         break;
                     case '3':
                         for (i=0; i<24; i++) {
-                            printf("En la fecha %i/%i el valor de energia media era %f.\n", datos[i].fecha.mes, datos[i].fecha.year, valor_media[i]);
+                            printf("En la fecha %i/%i el valor de energia media era %f.\n", 
+							datos[i].fecha.mes, datos[i].fecha.year, valor_media[i]);
                         }
                         break;
                     default:
@@ -132,7 +123,8 @@ int main(int argc, const char * argv[])
                     scanf("%i", &cambio1);
                 } while (cambio1>17);
                 for (i=0; i<24; i++) {
-                    printf("pulsa %i si quiere cambiar un dato de la fecha %i/%i, ", i, datos[i].fecha.mes, datos[i].fecha.year);
+                    printf("pulsa %i si quiere cambiar un dato de la fecha %i/%i, ", i, 
+					datos[i].fecha.mes, datos[i].fecha.year);
                 }
                 printf("\n");
                 do {
