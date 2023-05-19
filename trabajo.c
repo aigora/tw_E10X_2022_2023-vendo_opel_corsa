@@ -26,7 +26,7 @@ typedef struct dia
 
 typedef struct data
 {
-    double energia[18];
+    double energia[17];
 } data;
 
 // funciones
@@ -52,26 +52,30 @@ int main(int argc, const char * argv[])
         printf("Fichero abierto correctamente.\n");
         double valor_maximo[24], valor_media[24], valor_minimo[24];
         data datos[24];
-        int tamano=18;
+        int tamano=17;
         int i=0;
         char x;
         int cuenta_lineas=0;
         while(fscanf(pf, "%c" , &x) != EOF)
         {
-        	if(x == '\n')
-        	{
-        		cuenta_lineas++;
-			}
-		}
+            if(x == '\n')
+            {
+                cuenta_lineas++;
+            }
+            if(cuenta_lineas==4)
+            {
+                break;
+            }
+        }
         printf("%i\n", cuenta_lineas);
         i=0;
-        while (fscanf(pf, ",%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf", 
-		&datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i], 
-		&datos[6].energia[i], &datos[7].energia[i], &datos[8].energia[i], &datos[9].energia[i], &datos[10].energia[i], &datos[11].energia[i], 
-		&datos[12].energia[i], &datos[13].energia[i], &datos[14].energia[i], &datos[15].energia[i], &datos[16].energia[i], &datos[17].energia[i], 
-		&datos[18].energia[i], &datos[19].energia[i], &datos[20].energia[i], &datos[21].energia[i], &datos[22].energia[i], &datos[23].energia[i])!=EOF) 
-        {    
-			i++;
+        while (fscanf(pf, ",%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf",
+        &datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i],
+        &datos[6].energia[i], &datos[7].energia[i], &datos[8].energia[i], &datos[9].energia[i], &datos[10].energia[i], &datos[11].energia[i],
+        &datos[12].energia[i], &datos[13].energia[i], &datos[14].energia[i], &datos[15].energia[i], &datos[16].energia[i], &datos[17].energia[i],
+        &datos[18].energia[i], &datos[19].energia[i], &datos[20].energia[i], &datos[21].energia[i], &datos[22].energia[i], &datos[23].energia[i])!=EOF)
+        {
+            i++;
         }
         for (i=0; i<24; i++) {
             maximo(datos[i].energia, tamano, &valor_maximo[i]);
@@ -95,20 +99,20 @@ int main(int argc, const char * argv[])
                 switch (estadistico_option) {
                     case '1':
                         for (i=0; i<24; i++) {
-                            printf("En la fecha %i/%i el valor de energia maxima era %f.\n", 
-							test.mes[i], test.year[i], valor_maximo[i]);
+                            printf("En la fecha %i/%i el valor de energia maxima era %f.\n",
+                            test.mes[i], test.year[i], valor_maximo[i]);
                         }
                         break;
                     case '2':
                         for (i=0; i<24; i++) {
-                            printf("En la fecha %i/%i el valor de energia minima era %f.\n", 
-							test.mes[i], test.year[i], valor_minimo[i]);
+                            printf("En la fecha %i/%i el valor de energia minima era %f.\n",
+                            test.mes[i], test.year[i], valor_minimo[i]);
                         }
                         break;
                     case '3':
                         for (i=0; i<24; i++) {
-                            printf("En la fecha %i/%i el valor de energia media era %f.\n", 
-							test.mes[i], test.year[i], valor_media[i]);
+                            printf("En la fecha %i/%i el valor de energia media era %f.\n",
+                            test.mes[i], test.year[i], valor_media[i]);
                         }
                         break;
                     default:
@@ -123,8 +127,8 @@ int main(int argc, const char * argv[])
                     scanf("%i", &cambio1);
                 } while (cambio1>17);
                 for (i=0; i<24; i++) {
-                    printf("pulsa %i si quiere cambiar un dato de la fecha %i/%i, ", i, 
-					test.mes[i], test.year[i]);
+                    printf("pulsa %i si quiere cambiar un dato de la fecha %i/%i, ", i,
+                    test.mes[i], test.year[i]);
                 }
                 printf("\n");
                 do {
