@@ -24,6 +24,10 @@ typedef struct dia
     int year[24];
 } dia;
 
+typedef struct nom
+{
+	char nombre[50];
+} nom;
 typedef struct data
 {
     double energia[17];
@@ -39,6 +43,7 @@ void menu(void);
 int main(int argc, const char * argv[])
 {
     char menu_option;
+    nom nombre_energia[17];
     FILE *pf;
     dia test= {{1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12},
 	{2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2022,2022,2022,2022,
@@ -71,7 +76,7 @@ int main(int argc, const char * argv[])
         }
         printf("%i\n", cuenta_lineas);
         i=0;
-        while (fscanf(pf, ",%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf",
+        while (fscanf(pf, "%[^,]s,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf", nombre_energia[i].nombre, 
         &datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i],
         &datos[6].energia[i], &datos[7].energia[i], &datos[8].energia[i], &datos[9].energia[i], &datos[10].energia[i], &datos[11].energia[i],
         &datos[12].energia[i], &datos[13].energia[i], &datos[14].energia[i], &datos[15].energia[i], &datos[16].energia[i], &datos[17].energia[i],
