@@ -20,14 +20,13 @@
 // donde se guardan los datos
 typedef struct dia
 {
-    int mes;
-    int year;
+    int mes[24];
+    int year[24];
 } dia;
 
 typedef struct data
 {
     double energia[18];
-    dia fecha;
 } data;
 
 // funciones
@@ -41,7 +40,8 @@ int main(int argc, const char * argv[])
 {
     char menu_option;
     FILE *pf;
-    pf=fopen("generacion_por_tecnologias_21_22_puntos.csv", "r");
+    dia test= {{1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12},{2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022,2022}};
+    pf=fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
     if (pf == NULL)
     {
         printf("Error al abrir el fichero.\n");
@@ -96,19 +96,19 @@ int main(int argc, const char * argv[])
                     case '1':
                         for (i=0; i<24; i++) {
                             printf("En la fecha %i/%i el valor de energia maxima era %f.\n", 
-							datos[i].fecha.mes, datos[i].fecha.year, valor_maximo[i]);
+							test.mes[i], test.year[i], valor_maximo[i]);
                         }
                         break;
                     case '2':
                         for (i=0; i<24; i++) {
                             printf("En la fecha %i/%i el valor de energia minima era %f.\n", 
-							datos[i].fecha.mes, datos[i].fecha.year, valor_minimo[i]);
+							test.mes[i], test.year[i], valor_minimo[i]);
                         }
                         break;
                     case '3':
                         for (i=0; i<24; i++) {
                             printf("En la fecha %i/%i el valor de energia media era %f.\n", 
-							datos[i].fecha.mes, datos[i].fecha.year, valor_media[i]);
+							test.mes[i], test.year[i], valor_media[i]);
                         }
                         break;
                     default:
@@ -124,7 +124,7 @@ int main(int argc, const char * argv[])
                 } while (cambio1>17);
                 for (i=0; i<24; i++) {
                     printf("pulsa %i si quiere cambiar un dato de la fecha %i/%i, ", i, 
-					datos[i].fecha.mes, datos[i].fecha.year);
+					test.mes[i], test.year[i]);
                 }
                 printf("\n");
                 do {

@@ -44,7 +44,7 @@ int main()
 
 
     FILE *pf;
-    pf = fopen("C:/Users/Administrator/Desktop/vscode/c/trabajo/generacion_por_tecnologias_21_22_puntos.csv", "r");
+    pf = fopen("generacion_por_tecnologias_21_22_puntos.csv", "r");
     if (pf == NULL)
     {
         printf("Error al abrir el fichero.\n");
