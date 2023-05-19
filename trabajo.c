@@ -26,7 +26,7 @@ typedef struct dia
 
 typedef struct nom
 {
-	char nombre[50];
+    char nombre[50];
 } nom;
 typedef struct data
 {
@@ -46,8 +46,8 @@ int main(int argc, const char * argv[])
     nom nombre_energia[17];
     FILE *pf;
     dia test= {{1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12},
-	{2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2022,2022,2022,2022,
-	2022,2022,2022,2022,2022,2022,2022,2022}};
+    {2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2021,2022,2022,2022,2022,
+    2022,2022,2022,2022,2022,2022,2022,2022}};
     pf=fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
     if (pf == NULL)
     {
@@ -69,14 +69,19 @@ int main(int argc, const char * argv[])
             {
                 cuenta_lineas++;
             }
-            if(cuenta_lineas==4)
+            if(cuenta_lineas==5)
             {
                 break;
             }
         }
         printf("%i\n", cuenta_lineas);
         i=0;
-        while (fscanf(pf, "%[^,]s,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf", nombre_energia[i].nombre, 
+        fscanf(pf, "%[^,]s", nombre_energia[0].nombre);
+        printf("%s", nombre_energia[0].nombre);
+        fscanf(pf, "%c", &x);
+        fscanf(pf, "%lf,%lf", &datos[0].energia[i], &datos[1].energia[i]);
+        printf( "%lf,%lf", datos[0].energia[i], datos[1].energia[i]);
+        while (fscanf(pf, "%[^,]s,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf", nombre_energia[i].nombre,
         &datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i],
         &datos[6].energia[i], &datos[7].energia[i], &datos[8].energia[i], &datos[9].energia[i], &datos[10].energia[i], &datos[11].energia[i],
         &datos[12].energia[i], &datos[13].energia[i], &datos[14].energia[i], &datos[15].energia[i], &datos[16].energia[i], &datos[17].energia[i],
