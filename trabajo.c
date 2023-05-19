@@ -77,8 +77,13 @@ int main(int argc, const char * argv[])
             }
         }
         i=0;
-        while (fscanf(pf, ",%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf", &datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i], &datos[6].energia[i], &datos[7].energia[i], &datos[8].energia[i], &datos[9].energia[i], &datos[10].energia[i], &datos[11].energia[i], &datos[12].energia[i], &datos[13].energia[i], &datos[14].energia[i], &datos[15].energia[i], &datos[16].energia[i], &datos[17].energia[i], &datos[18].energia[i], &datos[19].energia[i], &datos[20].energia[i], &datos[21].energia[i], &datos[22].energia[i], &datos[23].energia[i])!=EOF) {
-            i++;
+        while (fscanf(pf, ",%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf", 
+		&datos[0].energia[i], &datos[1].energia[i], &datos[2].energia[i], &datos[3].energia[i], &datos[4].energia[i], &datos[5].energia[i], 
+		&datos[6].energia[i], &datos[7].energia[i], &datos[8].energia[i], &datos[9].energia[i], &datos[10].energia[i], &datos[11].energia[i], 
+		&datos[12].energia[i], &datos[13].energia[i], &datos[14].energia[i], &datos[15].energia[i], &datos[16].energia[i], &datos[17].energia[i], 
+		&datos[18].energia[i], &datos[19].energia[i], &datos[20].energia[i], &datos[21].energia[i], &datos[22].energia[i], &datos[23].energia[i])!=EOF) 
+        {    
+			i++;
         }
         for (i=0; i<24; i++) {
             maximo(datos[i].energia, tamano, &valor_maximo[i]);
