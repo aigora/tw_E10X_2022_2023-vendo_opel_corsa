@@ -38,7 +38,8 @@ void maximo(double vector[], int n, double *max);
 void media(double vector[], int n, double *med);
 void minimo(double vector[], int n, double *min);
 void menu(void);
-
+void ordena_mayor(double v[], int n);
+void ordena_menor(double v[], int n);
 //rama principal del programa
 int main(int argc, const char * argv[])
 {
@@ -83,6 +84,8 @@ int main(int argc, const char * argv[])
                 fscanf(pf, ",%lf", &datos[j].energia[i]);
                 printf( ",%lf", datos[j].energia[i]);
             }
+            fscanf(pf, "%c", &x);
+            printf("%c", x);
         }
         for (i=0; i<24; i++) {
             maximo(datos[i].energia, tamano, &valor_maximo[i]);
@@ -93,10 +96,16 @@ int main(int argc, const char * argv[])
         printf("SELECCIONE LA ACCION QUE QUIERE LLEVAR A CABO\n");
         printf("\n");
         menu(); // funcion que escribe las opciones el menu en pantalla
+        scanf("%c", &menu_option);
         char estadistico_option;
         int cambio1;
         int cambio2;
-        scanf("%c", &menu_option);
+        int buscar_option;
+        int buscar1;
+        int buscar2;
+        int ordenar_option;
+        int ordenar;
+        double vector_ordenar[24];
         switch(menu_option)
         {
             case '1':
@@ -106,18 +115,21 @@ int main(int argc, const char * argv[])
                 switch (estadistico_option) {
                     case '1':
                         for (i=0; i<24; i++) {
+                            maximo(datos[i].energia, tamano, &valor_maximo[i]);
                             printf("En la fecha %i/%i el valor de energia maxima era %f.\n",
                             test.mes[i], test.year[i], valor_maximo[i]);
                         }
                         break;
                     case '2':
                         for (i=0; i<24; i++) {
+                            minimo(datos[i].energia, tamano, &valor_minimo[i]);
                             printf("En la fecha %i/%i el valor de energia minima era %f.\n",
                             test.mes[i], test.year[i], valor_minimo[i]);
                         }
                         break;
                     case '3':
                         for (i=0; i<24; i++) {
+                            media(datos[i].energia, tamano, &valor_media[i]);
                             printf("En la fecha %i/%i el valor de energia media era %f.\n",
                             test.mes[i], test.year[i], valor_media[i]);
                         }
@@ -129,10 +141,10 @@ int main(int argc, const char * argv[])
                 break;
             case '2':
                 printf("has seleccionado el modo para cargar datos\n");
-                printf("Pulse 0 para Hidraulica, pulse 1 para Turbinacion bombeo, pulse 2 para Nuclear, pulse 3 para Carbon, pulse 4 para Fuel + Gas, pulse 5 para Motores diesel, pulse 6 para Turbina de gas, pulse 7 para Turbina de vapor, pulse 8 para Ciclo combinado, pulse 9 para Hidroeolica, pulse 10 para Eolica, pulse 11 para Solar fotovoltaica, pulse 12 para Solar termica, pulse 13 para Otras renovables, pulse 14 para Cogeneracion, pulse 15 para Residuos no renovables, pulse 16 para Residuos renovables, pulse 17 para Generacion total.\n");
+                printf("Pulse 0 para Hidraulica, pulse 1 para Turbinacion bombeo, pulse 2 para Nuclear, pulse 3 para Carbon, pulse 4 para Motores diesel, pulse 5 para Turbina de gas, pulse 6 para Turbina de vapor, pulse 7 para Ciclo combinado, pulse 8 para Hidroeolica, pulse 9 para Eolica, pulse 10 para Solar fotovoltaica, pulse 11 para Solar termica, pulse 12 para Otras renovables, pulse 13 para Cogeneracion, pulse 14 para Residuos no renovables, pulse 16 para Residuos renovables, pulse 16 para Generacion total.\n");
                 do {
                     scanf("%i", &cambio1);
-                } while (cambio1>17);
+                } while (cambio1>16);
                 for (i=0; i<24; i++) {
                     printf("pulsa %i si quiere cambiar un dato de la fecha %i/%i, ", i,
                     test.mes[i], test.year[i]);
@@ -140,23 +152,85 @@ int main(int argc, const char * argv[])
                 printf("\n");
                 do {
                     scanf("%i", &cambio2);
-                } while (cambio2>24);
+                } while (cambio2>23);
                 printf("Escriba el numero que quieras poner");
                 scanf("%lf", &datos[cambio2].energia[cambio1]);
                 break;
             case '3':
                 printf("has seleccionado el modo para guardar resultados\n");
+                
             // hacer cosas
                 break;
             case '4':
                 printf("has seleccionado el modo para buscar u ordenar valores\n");
+                printf("Si quieres buscar valores pulse 1, si quieres ordenar valores pulse 2\n");
+                scanf("%i", &buscar_option);
+                switch (buscar_option) {
+                    case 1:
+                        printf("has elegido buscar valores\n");
+                        printf("%i\n", cuenta_lineas);
+                        printf("Pulse 0 para Hidraulica, pulse 1 para Turbinacion bombeo, pulse 2 para Nuclear, pulse 3 para Carbon, pulse 4 para Motores diesel, pulse 5 para Turbina de gas, pulse 6 para Turbina de vapor, pulse 7 para Ciclo combinado, pulse 8 para Hidroeolica, pulse 9 para Eolica, pulse 10 para Solar fotovoltaica, pulse 11 para Solar termica, pulse 12 para Otras renovables, pulse 13 para Cogeneracion, pulse 14 para Residuos no renovables, pulse 16 para Residuos renovables, pulse 16 para Generacion total.\n");
+                        do {
+                            scanf("%i", &buscar1);
+                        } while (buscar1>16);
+                        for (i=0; i<24; i++) {
+                            printf("pulsa %i si quiere cambiar un dato de la fecha %i/%i, ", i,
+                            test.mes[i], test.year[i]);
+                        }
+                        printf("\n");
+                        do {
+                            scanf("%i", &buscar2);
+                        } while (buscar2>23);
+                        printf("El valor que estas buscando es %lf\n", datos[buscar2].energia[buscar1]);
+                        break;
+                    case 2:
+                        printf("has elegido ordenar valores\n");
+                        printf("Si quieres ordenar de mayor a menor pulse 1, si quieres ordenar de menor a mayor pulse 2\n");
+                        scanf("%i", &ordenar_option);
+                        switch (ordenar_option) {
+                            case 1:
+                                printf("Pulse 0 para Hidraulica, pulse 1 para Turbinacion bombeo, pulse 2 para Nuclear, pulse 3 para Carbon, pulse 4 para Motores diesel, pulse 5 para Turbina de gas, pulse 6 para Turbina de vapor, pulse 7 para Ciclo combinado, pulse 8 para Hidroeolica, pulse 9 para Eolica, pulse 10 para Solar fotovoltaica, pulse 11 para Solar termica, pulse 12 para Otras renovables, pulse 13 para Cogeneracion, pulse 14 para Residuos no renovables, pulse 16 para Residuos renovables, pulse 16 para Generacion total.\n");
+                                do {
+                                    scanf("%i", &ordenar);
+                                } while (ordenar>16);
+                                for (i=0; i<24; i++) {
+                                    vector_ordenar[i]=datos[i].energia[ordenar];
+                                }
+                                ordena_mayor(vector_ordenar, 24);
+                                printf("De mayor a menor los datos de %s son:\n", nombre_energia[ordenar].nombre);
+                                for (i=0; i<24; i++) {
+                                    printf("%lf\n", vector_ordenar[i]);
+                                }
+                            case 2:
+                                printf("Pulse 0 para Hidraulica, pulse 1 para Turbinacion bombeo, pulse 2 para Nuclear, pulse 3 para Carbon, pulse 4 para Motores diesel, pulse 5 para Turbina de gas, pulse 6 para Turbina de vapor, pulse 7 para Ciclo combinado, pulse 8 para Hidroeolica, pulse 9 para Eolica, pulse 10 para Solar fotovoltaica, pulse 11 para Solar termica, pulse 12 para Otras renovables, pulse 13 para Cogeneracion, pulse 14 para Residuos no renovables, pulse 16 para Residuos renovables, pulse 16 para Generacion total.\n");
+                                do {
+                                    scanf("%i", &ordenar);
+                                } while (ordenar>16);
+                                for (i=0; i<24; i++) {
+                                    vector_ordenar[i]=datos[i].energia[ordenar];
+                                }
+                                ordena_menor(vector_ordenar, 24);
+                                printf("De menor a mayor los datos de %s son:\n", nombre_energia[ordenar].nombre);
+                                for (i=0; i<24; i++) {
+                                    printf("%lf\n", vector_ordenar[i]);
+                                }
+                                break;
+                            default:
+                                printf("Eso no era una opcion\n");
+                                break;
+                        }
+                        break;
+                    default:
+                        printf("Eso no era una de las opciones");
+                        break;
+                }
             // hacer cosas
                 break;
             default:
                 printf("esa opcion no estaba en el menu\n");
                 break;
         }
-        
+        fclose(pf);
 
         return 0;
     }
@@ -205,7 +279,40 @@ void media(double vector[], int n, double *med)
     }
     *med = result_suma / n;
 }
-
+void ordena_mayor(double v[], int n)
+{
+    int i, j;
+    float menor;
+    for (i=0; i<n; i++)
+    {
+        for (j=0; j<i; j++)
+        {
+            if(v[j]<v[i])
+            {
+                menor=v[j];
+                v[j]=v[i];
+                v[i]=menor;
+            }
+        }
+    }
+}
+void ordena_menor(double v[], int n)
+{
+    int i, j;
+    float mayor;
+    for (i=0; i<n; i++)
+    {
+        for (j=0; j<i; j++)
+        {
+            if(v[j]>v[i])
+            {
+                mayor=v[j];
+                v[j]=v[i];
+                v[i]=mayor;
+            }
+        }
+    }
+}
 /*int lectura(int arcg,  char **argv)
 {
     FILE *fp;
