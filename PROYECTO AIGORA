@@ -1,7 +1,10 @@
 PROYECTO AIGORA 2023
 
-Vamos a realizar un proyecto que analizara los datos de un fichero/archivo .csv que es la generacion mensual por cada tipo de energia en España para trabajar con ellos, ya sea haciendo calculos estadisticos, ordenacion de valores, introduccion de nuevos numeros... El objetivo del trabajo consisite en poder construir un bloque de codigos en lenguaje c que nos permita realizar distintas cosas sobre el archivo, esos bloques de codigo han de estar bien estructurados y ordenados de manera que cualquier persona pueda saber usarlo y poder obtener estos datos, ordernarlos o meter nuevos.
-
+Vamos a realizar un proyecto que analizara los datos de un fichero/archivo .csv que es la generacion mensual por cada tipo de energia
+en España para trabajar con ellos, ya sea haciendo calculos estadisticos, ordenacion de valores, introduccion de nuevos numeros... 
+El objetivo del trabajo consisite en poder construir un bloque de codigos en lenguaje c que nos permita realizar distintas cosas sobre
+el archivo, esos bloques de codigo han de estar bien estructurados y ordenados de manera que cualquier persona pueda saber usarlo y 
+poder obtener estos datos, ordernarlos o meter nuevos.
 
 Integrantes del equipo:
 Marcos Rodríguez Delgado,
