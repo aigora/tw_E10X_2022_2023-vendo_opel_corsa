@@ -226,20 +226,20 @@ int main(int argc, const char * argv[])
                         } while (buscar2>23);
 
                         printf("El valor que estas buscando es %lf\n", datos[buscar2].energia[buscar1]);
-                        printf("quieres guardar el dato que acabas de bucar? y/n\n");
+                        printf("¿Quieres guardar el dato que acabas de buscar?\n");
                         scanf("%c", &si_no); //crear si_no 
                         if(si_no == 's')
                         {
-                            printf("en que posicion de memoria quieres guardarlo ?, recuerda que solo hay %i posiciones de memoria\n", cantidad_de_posiciones_de_memoria); //crear variable 
+                            printf("¿En que posicion de memoria quieres guardarlo?, recuerda que solo hay %i posiciones de memoria.\n", cantidad_de_posiciones_de_memoria); //crear variable 
                             scanf("%i", &posicion_de_memoria_seleccionada); 
                             memoria[posicion_de_memoria_seleccionada-1].resultados = datos[buscar2].energia[buscar1];
-                            printf("De que tipo de energia era el dato?\n");
+                            printf("¿De que tipo de energia era el dato?\n");
                             scanf("%s", memoria[posicion_de_memoria_seleccionada-1].energia);
-                            printf("el dato ha sido guardado con exito\n");
+                            printf("El dato ha sido guardado con exito.\n");
                         }
                         if(si_no == 'n')
                         {
-                            printf("de acuerdo\n");
+                            printf("De acuerdo\n");
                         }
                         system("pause");
                         break;
