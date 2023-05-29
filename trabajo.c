@@ -15,7 +15,8 @@
 #include <string.h>
 #include <math.h>
 
-#define ranuras_De_memoria 5
+#define numero_de_lineas 17
+#define cantidad_de_posiciones_de_memoria 5
 
 // donde se guardan los datos
 typedef struct dia
@@ -37,7 +38,6 @@ typedef struct data
 typedef struct resultados_guardados
 {
     nombre energia;
-    int mes, year;
     double resultados;
 } resultados_guardados;
 
@@ -54,14 +54,11 @@ void menu_energias(void);
 void ordena_mayor(double v[], int n);
 void ordena_menor(double v[], int n);
 
-void slot_De_memoria(int slot_de_memoria, resultados_guardados memoria[slot_de_memoria-1]);
-
-
 //rama principal del programa
 int main(int argc, const char * argv[])
 {
     printf("Bienvenido/a al panel de control de la generacion mensual(en GWh) dividida por energias en todo el territoio nacional,");
-	printf("desde aqui podra acceder a los distintos calculos estadisticos, ordenar los valores e incluso introducir nuevos.\n");
+	printf("desde aqui podra acceder a los distintos calculos estadisticos, ordenar los valores e incluso introducir nuevos.\n"); //que nivel
 	char menu_option;
 	nombre nombre_energia[17];
     FILE *pf;
@@ -87,30 +84,25 @@ int main(int argc, const char * argv[])
         int i=0;
         int j=0;
         char x;
-        int cuenta_lineas=0;
+        int cuenta_lineas=0, funcion_cuenta_lineas = 0;
         while(fscanf(pf, "%c" , &x) != EOF)
         {
             if(x == '\n')
             {
                 cuenta_lineas++;
             }
-            if(cuenta_lineas == 5)// para poder usar los datos del fichero
+            if(cuenta_lineas == 5) // para poder usar los datos del fichero
             {
             	break;
 			}
         }
-		//printf("%i\n", cuenta_lineas); [TEST]
         for (i=0; i<cantidad_De_energias; i++)  // porque es un por cada energia
         {
             fscanf(pf, "%[^,]s", nombre_energia[i].nombre);
-            //printf("%s", nombre_energia[i].nombre); [TEST]
             for (j=0; j<24; j++) // 24 datos en cada energia
             {
                 fscanf(pf, ",%lf", &datos[j].energia[i]);
-                //printf( ",%lf", datos[j].energia[i]); [TEST]
             }
-            //fscanf(pf, "%c", &x); // esto imprime un salto de linea no es necesario si solo se quieren guardar los datos  [TEST]
-            //printf("%c", x); [TEST]
         }
 
         for (i=0; i<24; i++)
@@ -133,11 +125,16 @@ int main(int argc, const char * argv[])
         int ordenar_option; // variables para ordenar valores
         int ordenar;
         double vector_ordenar[24];
+
+        //MEMORIA
+        char si_no;
+        int posicion_de_memoria_seleccionada;
+
+
         switch(menu_option)
         {
             case '1':
                 printf("Ha selecionado el modo Estadistica\n");
-                 //printf("Si quiere calcular los maximos pulse 1, si quiere calcular los minimos pulse 2, si quiere calcular la medias pulse 3\n");
                 printf("\n");
                 printf("Selecione lo que quiere hacer: \n");
                 menu_estadistica(); // funcion que imprime las opciones de menu estadistica para que no este todo tan aglomerado aqui
@@ -146,10 +143,9 @@ int main(int argc, const char * argv[])
                     case '1':
                         for (i=0; i<24; i++)
                         {
-                            maximo(datos[i].energia, cantidad_De_energias, &valor_maximo[i]);
+                            maximo(datos[i].energia, cantidad_De_energias, &valor_maximo[i]); // Con esto se juntan las fechas con sus respectivos datos del fichero
                             printf("En la fecha %i/%i el valor de energia maxima era %f.\n",
                             test.mes[i], test.year[i], valor_maximo[i]);
-                            // Con esto se juntan las fechas con sus respectivos datos del fichero
                         }
                         system("pause"); //BORRAR DEFINITIVO
                         break;
@@ -220,7 +216,7 @@ int main(int argc, const char * argv[])
                         } while (buscar1>16);
                         for (i=0; i<24; i++)
                         {
-                            printf("Pulsa %i si quiere cambiar un dato de la fecha %i/%i\n ", i,
+                            printf("Pulsa %i si quiere buscar un dato de la fecha %i/%i\n ", i,
                             test.mes[i], test.year[i]);
                         }
                         printf("\n");
@@ -230,6 +226,22 @@ int main(int argc, const char * argv[])
                         } while (buscar2>23);
 
                         printf("El valor que estas buscando es %lf\n", datos[buscar2].energia[buscar1]);
+                        printf("quieres guardar el dato que acabas de bucar? y/n\n");
+                        scanf("%c", &si_no); //crear si_no 
+                        if(si_no == 's')
+                        {
+                            printf("en que posicion de memoria quieres guardarlo ?, recuerda que solo hay %i posiciones de memoria\n", cantidad_de_posiciones_de_memoria); //crear variable 
+                            scanf("%i", &posicion_de_memoria_seleccionada); 
+                            memoria[posicion_de_memoria_seleccionada-1].resultados = datos[buscar2].energia[buscar1];
+                            printf("De que tipo de energia era el dato?\n");
+                            scanf("%s", memoria[posicion_de_memoria_seleccionada-1].energia);
+                            printf("el dato ha sido guardado con exito\n");
+                        }
+                        if(si_no == 'n')
+                        {
+                            printf("de acuerdo\n");
+                        }
+                        system("pause");
                         break;
                     case 2:
                         printf("Has elegido ordenar valores\n");
@@ -290,7 +302,8 @@ int main(int argc, const char * argv[])
             // hacer cosas
                 break;
             case '4':
-            	printf("El numero de lineas que tiene el fichero son 17");
+             	printf("El numero de lineas que tiene el fichero son %i\n", numero_de_lineas);
+                system("pause");
             	break;
 			default:
                 printf("esa opcion no estaba en el menu\n");
@@ -340,82 +353,6 @@ void menu_energias(void)
     printf("16 - Generacion total\n");
 }
 
-void slot_De_memoria(int slot_de_memoria, resultados_guardados memoria[slot_de_memoria-1]) //porque los vectores empiezan en 0
-{
-    printf("Ha seleccionado el modo de guardado de resultados\n");
-    printf("Selecciona la ranura de memoria en la que lo quieres guardar\n");
-    printf("Recuerda que solo tienes %i ranuras de memoria\n", ranuras_De_memoria);
-    if(slot_de_memoria == 1)
-    {
-        printf("Has seleccionado el slot de memoria numero 1");
-        printf("Seleccione el nombre que desea introducir:\t");
-        scanf("%s", memoria[slot_de_memoria-1].energia.nombre);
-        printf("\n");
-        printf("Seleccione el dato que desea guardar: \t");
-        scanf("%lf", &memoria[slot_de_memoria-1].resultados);
-        printf("\n");
-        printf("Seleccione la fecha en la que lo quiere guardar en formato MES/AÑO \t");
-        scanf("%i/%i", &memoria[slot_de_memoria-1].mes, &memoria[slot_de_memoria-1].year);
-        system("pause"); //borrar definitivo
-    }
-    else if(slot_de_memoria == 2)
-    {
-        printf("Has seleccionado el slot de memoria numero 2");
-        printf("Seleccione el nombre que desea introducir:\t");
-        scanf("%s", memoria[slot_de_memoria-1].energia.nombre);
-        printf("\n");
-        printf("Seleccione el dato que desea guardar: \t");
-        scanf("%lf", &memoria[slot_de_memoria-1].resultados);
-        printf("\n");
-        printf("Seleccione la fecha en la que lo quiere guardar en formato MES/AÑO \t");
-        scanf("%i/%i", &memoria[slot_de_memoria-1].mes, &memoria[slot_de_memoria-1].year);
-        system("pause"); //borrar definitivo
-    }
-    else if(slot_de_memoria == 3)
-    {
-        printf("Has seleccionado el slot de memoria numero 3");
-        printf("Seleccione el nombre que desea introducir:\t");
-        scanf("%s", memoria[slot_de_memoria-1].energia.nombre);
-        printf("\n");
-        printf("Seleccione el dato que desea guardar: \t");
-        scanf("%lf", &memoria[slot_de_memoria-1].resultados);
-        printf("\n");
-        printf("Seleccione la fecha en la que lo quiere guardar en formato MES/AÑO \t");
-        scanf("%i/%i", &memoria[slot_de_memoria-1].mes, &memoria[slot_de_memoria-1].year);
-        system("pause"); //borrar definitivo
-    }
-    else if(slot_de_memoria == 4)
-    {
-        printf("Has seleccionado el slot de memoria numero 4");
-        printf("Seleccione el nombre que desea introducir:\t");
-        scanf("%s", memoria[slot_de_memoria-1].energia.nombre);
-        printf("\n");
-        printf("Seleccione el dato que desea guardar: \t");
-        scanf("%lf", &memoria[slot_de_memoria-1].resultados);
-        printf("\n");
-        printf("Seleccione la fecha en la que lo quiere guardar en formato MES/AÑO \t");
-        scanf("%i/%i", &memoria[slot_de_memoria-1].mes, &memoria[slot_de_memoria-1].year);
-        system("pause"); //borrar definitivo
-    }
-    else if(slot_de_memoria == 5)
-    {
-        printf("Has seleccionado el slot de memoria numero 5");
-        printf("Seleccione el nombre que desea introducir:\t");
-        scanf("%s", memoria[slot_de_memoria-1].energia.nombre);
-        printf("\n");
-        printf("Seleccione el dato que desea guardar: \t");
-        scanf("%lf", &memoria[slot_de_memoria-1].resultados);
-        printf("\n");
-        printf("Seleccione la fecha en la que lo quiere guardar en formato MES/AÑO \t");
-        scanf("%i/%i", &memoria[slot_de_memoria-1].mes, &memoria[slot_de_memoria-1].year);
-        system("pause"); //borrar definitivo
-    }
-    else
-    {
-        printf("Recuerda que solo tienes %i slots de memoria", ranuras_De_memoria);
-        system("pause"); //borrar definitivo
-    }
-}
 
 
 void maximo(double vector[], int n, double *max)
