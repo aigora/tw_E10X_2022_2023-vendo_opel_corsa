@@ -59,6 +59,7 @@ int main(int argc, const char * argv[])
 {
     printf("Bienvenido/a al panel de control de la generacion mensual(en GWh) dividida por energias en todo el territoio nacional,");
 	printf("desde aqui podra acceder a los distintos calculos estadisticos, ordenar los valores e incluso introducir nuevos.\n"); //que nivel
+	printf("Le recordamos que todos los datos que vera aqui presentes corresponden a los años 2021-2022 y que son de acceso y uso publico");
 	char menu_option;
 	nombre nombre_energia[17];
     FILE *pf;
@@ -198,6 +199,7 @@ int main(int argc, const char * argv[])
 
                 printf("Escriba el numero que quieras poner:\n");
                 scanf("%lf", &datos[cambio2].energia[cambio1]);
+                printf("Gracias por introducir un dato nuevo haciendo uso de nuestro panel de control.\n");
                 system("pause"); //BORRAR DEFINITIVO
                 break;
             case '3':
@@ -226,6 +228,7 @@ int main(int argc, const char * argv[])
                         } while (buscar2>23);
 
                         printf("El valor que estas buscando es %lf\n", datos[buscar2].energia[buscar1]);
+                        printf("Gracias por hacer uso de nuestro sistema de busqueda de datos, hasta la proxima.\n");
                         printf("¿Quieres guardar el dato que acabas de buscar?\n");
                         scanf("%c", &si_no); //crear si_no 
                         if(si_no == 's')
@@ -266,6 +269,7 @@ int main(int argc, const char * argv[])
                                 {
                                     printf("%lf\n", vector_ordenar[i]);
                                 }
+                                printf("Gracias por hacer uso de nuestro sistema de ordenacion de datos energeticos.\n");
                                 system("pause"); //BORRAR DEFINITIVO
                                 break;
 
@@ -282,10 +286,11 @@ int main(int argc, const char * argv[])
                                 }
                                 ordena_menor(vector_ordenar, 24);
                                 printf("De menor a mayor los datos de %s son:\n", nombre_energia[ordenar].nombre);
-                                for (i=0; i<24; i++)
+								for (i=0; i<24; i++)
                                 {
                                     printf("%lf\n", vector_ordenar[i]);
                                 }
+                                printf("Gracias por hacer uso de nuestro sistema de ordenacion de datos energeticos.\n");
                                 system("pause"); //BORRAR DEFINITIVO
                                 break;
 
