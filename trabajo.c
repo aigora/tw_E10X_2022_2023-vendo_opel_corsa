@@ -148,7 +148,6 @@ int main(int argc, const char * argv[])
                             printf("En la fecha %i/%i el valor de energia maxima era %f.\n",
                             test.mes[i], test.year[i], valor_maximo[i]);
                         }
-                        system("pause"); //BORRAR DEFINITIVO
                         break;
                     case '2':
                         for (i=0; i<24; i++)
@@ -157,7 +156,6 @@ int main(int argc, const char * argv[])
                             printf("En la fecha %i/%i el valor de energia minima era %f.\n",
                             test.mes[i], test.year[i], valor_minimo[i]);
                         }
-                        system("pause");
                         break;
                     case '3':
                         for (i=0; i<24; i++)
@@ -166,11 +164,9 @@ int main(int argc, const char * argv[])
                             printf("En la fecha %i/%i el valor de energia media era %f.\n",
                             test.mes[i], test.year[i], valor_media[i]);
                         }
-                        system("pause"); //BORRAR DEFINITIVO
                         break;
                     default:
                         printf("Esa no era una opcion.\n");
-                        system("pause"); //BORRAR DEFINITIVO
                         break;
                 }
                 break;
@@ -200,7 +196,6 @@ int main(int argc, const char * argv[])
                 printf("Escriba el numero que quieras poner:\n");
                 scanf("%lf", &datos[cambio2].energia[cambio1]);
                 printf("Gracias por introducir un dato nuevo haciendo uso de nuestro panel de control.\n");
-                system("pause"); //BORRAR DEFINITIVO
                 break;
             case '3':
                 printf("Has seleccionado el modo para buscar u ordenar valores\n");
@@ -270,7 +265,6 @@ int main(int argc, const char * argv[])
                                     printf("%lf\n", vector_ordenar[i]);
                                 }
                                 printf("Gracias por hacer uso de nuestro sistema de ordenacion de datos energeticos.\n");
-                                system("pause"); //BORRAR DEFINITIVO
                                 break;
 
                             case 2:
@@ -291,12 +285,10 @@ int main(int argc, const char * argv[])
                                     printf("%lf\n", vector_ordenar[i]);
                                 }
                                 printf("Gracias por hacer uso de nuestro sistema de ordenacion de datos energeticos.\n");
-                                system("pause"); //BORRAR DEFINITIVO
                                 break;
 
                             default:
                                 printf("Eso no era una opcion, seleciona una opcion valida\n");
-                                system("pause"); //BORRAR DEFINITIVO
                                 break;
                         }
                         break;
