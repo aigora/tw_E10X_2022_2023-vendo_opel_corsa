@@ -1,0 +1,28 @@
+Trabajohttps://github.com/aigora/tw_E10X_2022_2023-vendo_opel_corsa/tree/master recuperacion para informatica: 
+
+Os presento mi trabajo para recuperar la materia de informatica que hace lo siguiente:
+
+1. El programa lee los datos de un archivo CSV llamado "generacion_por_tecnologias_21_22_puntos_simplificado.csv".
+2. Los datos leídos se almacenan en una estructura llamada Dato, que contiene el nombre de la energía y su valor.
+3. El programa realiza diferentes cálculos con los datos:
+  .Calcula el valor máximo de todos los datos.
+  .Calcula el valor mínimo de todos los datos.
+  .Calcula la media de todos los valores.
+  .Ordena los datos de mayor a menor.
+4. El programa escribe los resultados en un archivo de salida llamado "resultados.txt".
+  .Los resultados incluyen el nombre de la energía y su valor, separados por una coma.
+  .Cada resultado se escribe en una línea separada.
+5. El programa muestra mensajes en la consola indicando el estado de la carga de datos y la escritura de resultados.
+
+En resumen, el código lee datos de un archivo CSV, realiza cálculos estadísticos básicos, ordena los datos y escribe los resultados en un archivo de salida. Esto permite analizar y 
+procesar los datos de generación por tecnologías y obtener información relevante sobre ellos.
+
+
+Ismael Quadimi,
+
+
+Usuarios en github:
+
+IsMaq
+
+
