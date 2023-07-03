@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2023-07-03T19:44:17.828Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="t8Ld4mU8cdn-pvv6GT-5" version="21.3.5" type="device">
+  <diagram name="Page-1" id="LrpT-jhoQz50Jw9gFBM5">
+    <mxGraphModel dx="1434" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_58CfzV87HKRERaLYwMA-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="_58CfzV87HKRERaLYwMA-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="740" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="_58CfzV87HKRERaLYwMA-1" target="_58CfzV87HKRERaLYwMA-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-1" value="INICIO" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="364" y="20" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-3" value="MOSTRAR MENSAJE DE ERROR" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="690" y="120" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_58CfzV87HKRERaLYwMA-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="414" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-4" value="ARCHIVO SE ABRE" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.document2;whiteSpace=wrap;size=0.25;" vertex="1" parent="1">
+          <mxGeometry x="364" y="140" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_58CfzV87HKRERaLYwMA-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="740" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_58CfzV87HKRERaLYwMA-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="414" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-8" value="Calcular generación total por año: Para cada tecnología de generación: Para cada mes de generación:" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="364" y="280" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-10" value="MOSTRAR MENSAJE DE ERROR" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="690" y="400" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_58CfzV87HKRERaLYwMA-12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="414" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-12" value="ABRIR ARCHIVO DE SALIDA" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.document2;whiteSpace=wrap;size=0.25;" vertex="1" parent="1">
+          <mxGeometry x="364" y="510" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_58CfzV87HKRERaLYwMA-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="414" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-14" value="Escribir encabezado en el archivo de salida Para cada año en generación total: Escribir año y generación total en el archivo de salida" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="356" y="680" width="116" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="_58CfzV87HKRERaLYwMA-16" value="MOSTRAR MENSAJE DE EXITO" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="364" y="890" width="100" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
